@@ -234,6 +234,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/29/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobottDoG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RobottDoG.com">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/29/ES6/" itemprop="url">ES6入门：使用箭头函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-29T20:32:47+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/29/ES6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/29/ES6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="在-JavaScript-中使用箭头函数"><a href="#在-JavaScript-中使用箭头函数" class="headerlink" title="在 JavaScript 中使用箭头函数"></a>在 JavaScript 中使用箭头函数</h4><h5 id="返回基本类型"><a href="#返回基本类型" class="headerlink" title="返回基本类型"></a>返回基本类型</h5><p>许多现代编程语言都支持箭头函数的语法，例如 C#、Swift，而 ES6 也将箭头函数加入到 JavaScript 的语法中。我们在原生的 JS 中已经拥有了匿名函数，但一个更为简洁的表达式不仅方便书写，且能更为直观的表达语义。</p>
+<p>当仅有一个参数且返回结果是一个表达式时，语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1,2,3].map( num =&gt; num*2 )</div><div class="line">// &lt;- [2,4,6]</div></pre></td></tr></table></figure></p>
+<p>如果我们用 ES5 ，他会是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[1,2,3].map(function(num)&#123;</div><div class="line">	return num*2;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>当我们不需要参数，或者要传入两个或者更多参数，我们必须用（）来包含这些参数（即使没有）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1,2,3,4].map((num,index) =&gt; num*2+index)</div><div class="line">//&lt;- [2,5,8,11]</div></pre></td></tr></table></figure></p>
+<p>当然，更多情况下我们不仅仅返回单一的表达式，还会写一些逻辑语句。这些语句，我们写在 { } 中，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[1,2,3,4].map(num =&gt; &#123;</div><div class="line">	var multiplier = 2+num;</div><div class="line">	return multiplier*num;</div><div class="line">&#125;)</div><div class="line">//&lt;-[3,8,15,24]</div></pre></td></tr></table></figure></p>
+<p>同样适用于多个参数的情形：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[1,2,3,4].map((num,index) =&gt; &#123;</div><div class="line">	var multiplier = 2+index;</div><div class="line">	return multiplier*num;</div><div class="line">&#125;)</div><div class="line">//&lt;-[2,6,12,20]</div></pre></td></tr></table></figure></p>
+<h5 id="返回对象"><a href="#返回对象" class="headerlink" title="返回对象"></a>返回对象</h5><p>当我们使用箭头函数返回一个对象时，我们需要使用（）包含这个对象，不然就会出现语法错误。<br>例1中，编译器将 number: n 解析为函数中的语句（number 解析为标签，n 解析为表达式，而这其实是不合法的），但并没有 return 语句，所以 map 的返回值为 undefined。<br>例2中，something: ‘ else ‘ 对编译器来说并无任何含义，所以抛出了语法错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3].map(n =&gt; &#123; number: n &#125;)</div><div class="line">// [undefined, undefined, undefined]</div><div class="line">[1, 2, 3].map(n =&gt; &#123; number: n, something: &apos;else&apos; &#125;)</div><div class="line">// &lt;- SyntaxError</div><div class="line">[1, 2, 3].map(n =&gt; (&#123; number: n &#125;))</div><div class="line">// &lt;- [&#123; number: 1 &#125;, &#123; number: 2 &#125;, &#123; number: 3 &#125;]</div><div class="line">[1, 2, 3].map(n =&gt; (&#123; number: n, something: &apos;else&apos; &#125;))</div><div class="line">/* &lt;- [</div><div class="line">  &#123; number: 1, something: &apos;else&apos; &#125;,</div><div class="line">  &#123; number: 2, something: &apos;else&apos; &#125;,</div><div class="line">  &#123; number: 3, something: &apos;else&apos; &#125;]</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<h5 id="函数作用范围"><a href="#函数作用范围" class="headerlink" title="函数作用范围"></a>函数作用范围</h5><p>箭头函数的作用范围与其作用域绑定，也就是说当你在函数内部深层嵌套函数时，不用通过 var self = this 或者 .bind(this) 来维持上下文<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Timer () &#123;</div><div class="line">  this.seconds = 0</div><div class="line">  setInterval(() =&gt; this.seconds++, 1000)</div><div class="line">&#125;</div><div class="line">var timer = new Timer()</div><div class="line">setTimeout(() =&gt; console.log(timer.seconds), 3100)</div><div class="line">// &lt;- 3</div></pre></td></tr></table></figure></p>
+<p>值得注意的是，ES6的箭头函数对 this 进行绑定，意味着 .call 和 .apply 不再能改变函数的上下文。</p>
+<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p>当你需要一个匿名函数来返回某些表达式时，箭头函数是简洁的，并在某种程度上让你的代码更加的精简。<br>但并不是任何情况下，都适合使用箭头函数。当参数过多，函数体逻辑较复杂时，命名函数使得你的程序更加可读。<br>箭头函数的优越性体现在函数式编程的情形，.map, .filter, 或者 .reduce。同样，在异步流程控制中，箭头函数消除了大量 callback 函数带来的阅读障碍，会是一个优秀的选择。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/写在开始/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -430,7 +570,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -443,7 +583,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
