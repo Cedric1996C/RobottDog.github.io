@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="闲谈," />
+  <meta name="keywords" content="前端开发," />
 
 
 
@@ -71,18 +71,20 @@
 
 
 
-<meta name="description" content="9月17日，提前结束秋招开始暑期中旬去实习，由于入职较晚，公司岗位已经饱和，实习过程中每天都在做基础的数据处理工作，不慎厌烦。做出决定后，于8月5日辞职准备校招，目标岗位是前端工程师。  客观情况春季实习生招聘阶段，一直准备的是 Java后台开发 岗位的准备，春学期拿得出手的项目大概是一个 iOS 的 App，以及基于 Springboot 的管理应用。前端方面的实践不足，是秋招过程中的最大劣势。">
-<meta name="keywords" content="闲谈">
+<meta name="description" content="前言结束秋招后，提前开始做毕设，项目是基于 DCOS 框架前端部分的二次开发，该项目使用了  react + flux 进行搭建，并使用 webpack 进行打包。DCOS 最新的官方稳定版本 v1.10.0，其 node 版本号：4.4.x ，npm 版本号：3.9.x。在二次开发中，尝试探索软件的新版本，对新的特性加以利用无疑是有帮助的。于是，在开发中决定使用支持进户全部 ES6 的特性 no">
+<meta name="keywords" content="前端开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写在开始">
-<meta property="og:url" content="http://yoursite.com/2017/09/20/写在开始/index.html">
+<meta property="og:title" content="node 及 webpack 版本更新实践">
+<meta property="og:url" content="http://yoursite.com/2017/10/08/node-及-webpack-版本更新实践/index.html">
 <meta property="og:site_name" content="RobottDoG.com">
-<meta property="og:description" content="9月17日，提前结束秋招开始暑期中旬去实习，由于入职较晚，公司岗位已经饱和，实习过程中每天都在做基础的数据处理工作，不慎厌烦。做出决定后，于8月5日辞职准备校招，目标岗位是前端工程师。  客观情况春季实习生招聘阶段，一直准备的是 Java后台开发 岗位的准备，春学期拿得出手的项目大概是一个 iOS 的 App，以及基于 Springboot 的管理应用。前端方面的实践不足，是秋招过程中的最大劣势。">
+<meta property="og:description" content="前言结束秋招后，提前开始做毕设，项目是基于 DCOS 框架前端部分的二次开发，该项目使用了  react + flux 进行搭建，并使用 webpack 进行打包。DCOS 最新的官方稳定版本 v1.10.0，其 node 版本号：4.4.x ，npm 版本号：3.9.x。在二次开发中，尝试探索软件的新版本，对新的特性加以利用无疑是有帮助的。于是，在开发中决定使用支持进户全部 ES6 的特性 no">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-24T00:53:56.000Z">
+<meta property="og:image" content="http://oxgbg3ran.bkt.clouddn.com/webpack-version-migration/01.png">
+<meta property="og:updated_time" content="2017-10-08T02:54:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写在开始">
-<meta name="twitter:description" content="9月17日，提前结束秋招开始暑期中旬去实习，由于入职较晚，公司岗位已经饱和，实习过程中每天都在做基础的数据处理工作，不慎厌烦。做出决定后，于8月5日辞职准备校招，目标岗位是前端工程师。  客观情况春季实习生招聘阶段，一直准备的是 Java后台开发 岗位的准备，春学期拿得出手的项目大概是一个 iOS 的 App，以及基于 Springboot 的管理应用。前端方面的实践不足，是秋招过程中的最大劣势。">
+<meta name="twitter:title" content="node 及 webpack 版本更新实践">
+<meta name="twitter:description" content="前言结束秋招后，提前开始做毕设，项目是基于 DCOS 框架前端部分的二次开发，该项目使用了  react + flux 进行搭建，并使用 webpack 进行打包。DCOS 最新的官方稳定版本 v1.10.0，其 node 版本号：4.4.x ，npm 版本号：3.9.x。在二次开发中，尝试探索软件的新版本，对新的特性加以利用无疑是有帮助的。于是，在开发中决定使用支持进户全部 ES6 的特性 no">
+<meta name="twitter:image" content="http://oxgbg3ran.bkt.clouddn.com/webpack-version-migration/01.png">
 
 
 
@@ -112,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/20/写在开始/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/08/node-及-webpack-版本更新实践/"/>
 
 
 
 
 
-  <title>写在开始 | RobottDoG.com</title>
+  <title>node 及 webpack 版本更新实践 | RobottDoG.com</title>
   
 
 
@@ -235,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/写在开始/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/08/node-及-webpack-版本更新实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RobottDoG">
@@ -252,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">写在开始</h1>
+          <h1 class="post-title" itemprop="name headline">node 及 webpack 版本更新实践</h1>
         
 
         <div class="post-meta">
@@ -264,8 +266,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T22:49:56+08:00">
-                2017-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T10:53:58+08:00">
+                2017-10-08
               </time>
             
 
@@ -283,9 +285,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/20/写在开始/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/08/node-及-webpack-版本更新实践/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/20/写在开始/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/08/node-及-webpack-版本更新实践/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -318,36 +320,23 @@
       
 
       
-        <h4 id="9月17日，提前结束秋招"><a href="#9月17日，提前结束秋招" class="headerlink" title="9月17日，提前结束秋招"></a>9月17日，提前结束秋招</h4><h5 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h5><p>暑期中旬去实习，由于入职较晚，公司岗位已经饱和，实习过程中每天都在做基础的数据处理工作，不慎厌烦。做出决定后，于8月5日辞职准备校招，目标岗位是前端工程师。 </p>
-<h5 id="客观情况"><a href="#客观情况" class="headerlink" title="客观情况"></a>客观情况</h5><p>春季实习生招聘阶段，一直准备的是 Java后台开发 岗位的准备，春学期拿得出手的项目大概是一个 iOS 的 App，以及基于 Springboot 的管理应用。前端方面的实践不足，是秋招过程中的最大劣势。<br>此外，已经通过HW优招的我，暂时解决了失业忧虑，也给了我很大的信心进行转岗投递。</p>
-<h5 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h5><p>项目经验的不足短期之内无法弥补，但考虑秋招主要考察应届生的计算机基础和编程能力，针对性的复习准备仍有一线希望。</p>
-<p> 前端基础：</p>
-<pre><code>1. 百度前端学院基础练习
-2. 《Javascript高级程序设计》
-3. 《HTML5&amp;CSS3实战》
-</code></pre><p>算法类：</p>
-<pre><code>1. 《剑指offer》
-2. leetcode 
-3. 《编程之美》
-</code></pre><p>网络&amp;操作系统：</p>
-<pre><code>1. 《深入理解计算机系统》
-2. 《图解HTTP》
-</code></pre><p>技术博客：</p>
-<pre><code>1. 阮一峰
-2. 百度FEX、360奇舞团、网易考拉等
-</code></pre><h5 id="秋招进程"><a href="#秋招进程" class="headerlink" title="秋招进程"></a>秋招进程</h5><p>秋招流程无外乎投简历、笔试、面试。虽然没有前端工程开发的经历，但大三学期的相关实践并非一无是处，仍有半数公司给了我面试的机会。</p>
-<p>面试中，一面偏向于考察基础知识和算法能力。我所参加的四次面试，均通过了一面。所以我在中旬就停止了算法方面的准备。</p>
-<p>二面中，实践经历的缺失成为了阿格硫斯之踵。每当面试官考察一个基础知识点，并将其放到实际开发过程中追问，几乎都答不上来。印象最深的是某游戏的主管，问了我登陆成功后的原界面重定位，习惯后端开发的我停留在 session 解决的层面，并不能给出客户端解决方案，最终挂掉。</p>
-<p>回去后思考良久，最终感受到暂时不足以获得一份较好的前端开发offer，决定结束秋招，沉淀一段时间。</p>
-<h4 id="9月18日，HW意向书"><a href="#9月18日，HW意向书" class="headerlink" title="9月18日，HW意向书"></a>9月18日，HW意向书</h4><p>终于等到了HW公司的意向书，但实习经历的身不由己与厌倦感席卷着我。由于业务性质与客户群体，HW公司的 web 前端开发较一线互联网公司有一定差距，且对应届生进行随机分配岗位的做法也让我难以接受。</p>
-<p>最终决定放弃这个 offer.</p>
-<h4 id="9月20日，开始毕设"><a href="#9月20日，开始毕设" class="headerlink" title="9月20日，开始毕设"></a>9月20日，开始毕设</h4><h5 id="806"><a href="#806" class="headerlink" title="806"></a>806</h5><p>C老板得知我的决定后，问了我一句：“觉得大学三年过得怎么样？”</p>
-<p>当时并不好意思真实回答，内心觉得，这三年并没有荒度，但作为学生并不成功。</p>
-<p>可我还有一年的时间，在NJU做好学生分内事，为职业生涯开启一个好的起点，并用这个 Blog 去简单记录，无聊时候自己看看，聊以自慰。</p>
-<p><strong>写在开始。</strong></p>
-<hr>
-<p>（9月24日更新）</p>
-<h5 id="意外offer"><a href="#意外offer" class="headerlink" title="意外offer"></a>意外offer</h5><p>前日下午意外的收到了墨灿游戏的正式offer，工作地点、福利待遇、氛围价值观都很满意，准备签约~<br>至此，正式结束秋招。虽然没有进入一线互联网公司，但一个新兴的、发展良好的、有活力的团队不失为好的去处。剩下的大学时光，好好做毕设、回到球队、陪好女朋友，更进一步吧~</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>结束秋招后，提前开始做毕设，项目是基于 <a href="https://dcos.io/docs/1.10/" target="_blank" rel="external">DCOS</a> 框架前端部分的二次开发，该项目使用了  react + flux 进行搭建，并使用 webpack 进行打包。<br>DCOS 最新的官方稳定版本 v1.10.0，其 node 版本号：4.4.x ，npm 版本号：3.9.x。在二次开发中，尝试探索软件的新版本，对新的特性加以利用无疑是有帮助的。于是，在开发中决定使用支持进户全部 ES6 的特性 node v6.11.4。<br>（注：笔者写本文时，node.js 的官方 LTS 版本为 v6.11.4，在进行本地升级时使用了 node v7.9.0，但最终还是使用了 LTS 版本。）</p>
+<h4 id="node-更新"><a href="#node-更新" class="headerlink" title="node 更新"></a>node 更新</h4><p>配置新的 node 和 npm 版本并进行本地依赖安装，控制台报错，错误信息提示此版本的许多依赖库的版本较低。解决此问题并无更好的办法，一一在 Github 上查询稳定新版本并 npm install –save-dev 进行升级。升级后，npm install 安装成功，并提出以下警告：</p>
+<p><img src="http://oxgbg3ran.bkt.clouddn.com/webpack-version-migration/01.png" alt="01"></p>
+<h4 id="更新-webpack3"><a href="#更新-webpack3" class="headerlink" title="更新 webpack3"></a>更新 webpack3</h4><p>随着 es6 的正式推出，新的 react 插件在其基础上进行开发，webpack1 不能满足新的需求，原项目的 webpack 版本需要进行更新。我选用了官方提供的 <a href="https://webpack.js.org/concepts/" target="_blank" rel="external">webpack v3.6.0</a> 进行项目的打包。<br>项目打包文件构成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- webpack</div><div class="line">	| - plugins</div><div class="line">		|- svg-compiler-plugin.js</div><div class="line">	  - proxy.dev.js</div><div class="line">	  -	proxy.template.js</div><div class="line">	  -	webpack.config.babel.js</div><div class="line">	  -	webpack.dev.babel.js</div><div class="line">	  -	webpack.production.babel.js</div><div class="line">	  -	webpack.babel.js</div></pre></td></tr></table></figure></p>
+<p>工程并没有选择单个的 webpack.config.js 文件进行入口出口的配置，webpack.config.babel.js 文件定义了模块的加载、解析，webpack.dev.babel.js 、webpack.production.babel.js 分别对应了开发环境、生产环境下的配置。</p>
+<p>更新过程中，主要依照 <a href="https://webpack.js.org/guides/migrating/" target="_blank" rel="external">webpack 迁徙文档</a>，其中的主要变动如下：</p>
+<ol>
+<li>resolve 相关选项以 resolve.modules 的形式进行配置</li>
+<li>取消在「在模块名中自动添加 -loader 后缀 」</li>
+<li>pre 或者 post 属性需要在 loader 中以 enforce 属性说明</li>
+</ol>
+<h4 id="更规范的书写"><a href="#更规范的书写" class="headerlink" title="更规范的书写"></a>更规范的书写</h4><p>除此之外，更新过程中还遇到一些零碎的语法问题，在此汇总并记录：</p>
+<ol>
+<li>module.constructor()._compile 接口不再接受 undefined 或者 null 值</li>
+<li>webpack 的非显式 env_check，用明确的 alias 配置</li>
+</ol>
+<p>参考链接：<br>1.<a href="https://stackoverflow.com/questions/39668579/webpack-2-1-0-beta-25-error-unknown-property-postloaders" target="_blank" rel="external">webpack 2.1.0-beta.25 error unknown property postLoaders</a><br>2.<a href="https://github.com/bunkat/later/issues/155" target="_blank" rel="external">Can’t find later-cov.js?</a><br>3.<a href="https://github.com/nodejs/node/issues/11461" target="_blank" rel="external">_compile method of module.constructor throws when filename is not passed or is null/undefined</a></p>
 
       
     </div>
@@ -365,7 +354,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/闲谈/" rel="tag"># 闲谈</a>
+            <a href="/tags/前端开发/" rel="tag"># 前端开发</a>
           
         </div>
       
@@ -378,15 +367,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/29/ES6/" rel="next" title="ES6入门：使用箭头函数">
+                <i class="fa fa-chevron-left"></i> ES6入门：使用箭头函数
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/29/ES6/" rel="prev" title="ES6入门：使用箭头函数">
-                ES6入门：使用箭头函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -542,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#9月17日，提前结束秋招"><span class="nav-number">1.</span> <span class="nav-text">9月17日，提前结束秋招</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开始"><span class="nav-number">1.1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#客观情况"><span class="nav-number">1.2.</span> <span class="nav-text">客观情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#准备阶段"><span class="nav-number">1.3.</span> <span class="nav-text">准备阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#秋招进程"><span class="nav-number">1.4.</span> <span class="nav-text">秋招进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9月18日，HW意向书"><span class="nav-number">2.</span> <span class="nav-text">9月18日，HW意向书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9月20日，开始毕设"><span class="nav-number">3.</span> <span class="nav-text">9月20日，开始毕设</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#806"><span class="nav-number">3.1.</span> <span class="nav-text">806</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#意外offer"><span class="nav-number">3.2.</span> <span class="nav-text">意外offer</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node-更新"><span class="nav-number">2.</span> <span class="nav-text">node 更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新-webpack3"><span class="nav-number">3.</span> <span class="nav-text">更新 webpack3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更规范的书写"><span class="nav-number">4.</span> <span class="nav-text">更规范的书写</span></a></li></ol></div>
             
 
           </div>
@@ -717,9 +706,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/09/20/写在开始/';
-          this.page.identifier = '2017/09/20/写在开始/';
-          this.page.title = '写在开始';
+          this.page.url = 'http://yoursite.com/2017/10/08/node-及-webpack-版本更新实践/';
+          this.page.identifier = '2017/10/08/node-及-webpack-版本更新实践/';
+          this.page.title = 'node 及 webpack 版本更新实践';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://robottdog-github-io.disqus.com/embed.js';
