@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ES6," />
+  <meta name="keywords" content="Nodejs," />
 
 
 
@@ -71,18 +71,22 @@
 
 
 
-<meta name="description" content="在 JavaScript 中使用箭头函数返回基本类型许多现代编程语言都支持箭头函数的语法，例如 C#、Swift，而 ES6 也将箭头函数加入到 JavaScript 的语法中。我们在原生的 JS 中已经拥有了匿名函数，但一个更为简洁的表达式不仅方便书写，且能更为直观的表达语义。 当仅有一个参数且返回结果是一个表达式时，语法如下所示：12[1,2,3].map( num =&amp;gt; num*2 )">
-<meta name="keywords" content="ES6">
+<meta name="description" content="前言近日，开发 DCOS 项目的过程中，曹老板提出为该平台提供一个 OAuth2 服务，并以此作为平台的基础登录认证方式。此先，平台使用了组内的 LDAP 单点登录，用户的验证已有现成的服务器处理。在此基础上的 OAuth2 服务器功能简单、明确，考虑尝试用 nodejs 搭建一个中间件。 OAuth 2.0OAuth 2.0 是一个关于授权（Authorization）的开放网络标准，在全世界范">
+<meta name="keywords" content="Nodejs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6入门：使用箭头函数">
-<meta property="og:url" content="http://yoursite.com/2017/09/29/ES6/index.html">
+<meta property="og:title" content="使用Nodejs搭建一个OAuth2服务">
+<meta property="og:url" content="http://yoursite.com/2017/11/01/使用Nodejs搭建一个OAuth2服务/index.html">
 <meta property="og:site_name" content="RobottDoG.com">
-<meta property="og:description" content="在 JavaScript 中使用箭头函数返回基本类型许多现代编程语言都支持箭头函数的语法，例如 C#、Swift，而 ES6 也将箭头函数加入到 JavaScript 的语法中。我们在原生的 JS 中已经拥有了匿名函数，但一个更为简洁的表达式不仅方便书写，且能更为直观的表达语义。 当仅有一个参数且返回结果是一个表达式时，语法如下所示：12[1,2,3].map( num =&amp;gt; num*2 )">
+<meta property="og:description" content="前言近日，开发 DCOS 项目的过程中，曹老板提出为该平台提供一个 OAuth2 服务，并以此作为平台的基础登录认证方式。此先，平台使用了组内的 LDAP 单点登录，用户的验证已有现成的服务器处理。在此基础上的 OAuth2 服务器功能简单、明确，考虑尝试用 nodejs 搭建一个中间件。 OAuth 2.0OAuth 2.0 是一个关于授权（Authorization）的开放网络标准，在全世界范">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-29T13:27:27.000Z">
+<meta property="og:image" content="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/online-example">
+<meta property="og:image" content="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/authorize_code">
+<meta property="og:image" content="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/own-authorize_code">
+<meta property="og:updated_time" content="2017-11-01T15:56:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6入门：使用箭头函数">
-<meta name="twitter:description" content="在 JavaScript 中使用箭头函数返回基本类型许多现代编程语言都支持箭头函数的语法，例如 C#、Swift，而 ES6 也将箭头函数加入到 JavaScript 的语法中。我们在原生的 JS 中已经拥有了匿名函数，但一个更为简洁的表达式不仅方便书写，且能更为直观的表达语义。 当仅有一个参数且返回结果是一个表达式时，语法如下所示：12[1,2,3].map( num =&amp;gt; num*2 )">
+<meta name="twitter:title" content="使用Nodejs搭建一个OAuth2服务">
+<meta name="twitter:description" content="前言近日，开发 DCOS 项目的过程中，曹老板提出为该平台提供一个 OAuth2 服务，并以此作为平台的基础登录认证方式。此先，平台使用了组内的 LDAP 单点登录，用户的验证已有现成的服务器处理。在此基础上的 OAuth2 服务器功能简单、明确，考虑尝试用 nodejs 搭建一个中间件。 OAuth 2.0OAuth 2.0 是一个关于授权（Authorization）的开放网络标准，在全世界范">
+<meta name="twitter:image" content="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/online-example">
 
 
 
@@ -112,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/29/ES6/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/01/使用Nodejs搭建一个OAuth2服务/"/>
 
 
 
 
 
-  <title>ES6入门：使用箭头函数 | RobottDoG.com</title>
+  <title>使用Nodejs搭建一个OAuth2服务 | RobottDoG.com</title>
   
 
 
@@ -235,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/29/ES6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/01/使用Nodejs搭建一个OAuth2服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RobottDoG">
@@ -252,7 +256,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ES6入门：使用箭头函数</h1>
+          <h1 class="post-title" itemprop="name headline">使用Nodejs搭建一个OAuth2服务</h1>
         
 
         <div class="post-meta">
@@ -264,8 +268,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-29T20:32:47+08:00">
-                2017-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-01T16:38:18+08:00">
+                2017-11-01
               </time>
             
 
@@ -283,9 +287,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/29/ES6/#comments" itemprop="discussionUrl">
+                <a href="/2017/11/01/使用Nodejs搭建一个OAuth2服务/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/29/ES6/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/11/01/使用Nodejs搭建一个OAuth2服务/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -318,16 +322,38 @@
       
 
       
-        <h4 id="在-JavaScript-中使用箭头函数"><a href="#在-JavaScript-中使用箭头函数" class="headerlink" title="在 JavaScript 中使用箭头函数"></a>在 JavaScript 中使用箭头函数</h4><h5 id="返回基本类型"><a href="#返回基本类型" class="headerlink" title="返回基本类型"></a>返回基本类型</h5><p>许多现代编程语言都支持箭头函数的语法，例如 C#、Swift，而 ES6 也将箭头函数加入到 JavaScript 的语法中。我们在原生的 JS 中已经拥有了匿名函数，但一个更为简洁的表达式不仅方便书写，且能更为直观的表达语义。</p>
-<p>当仅有一个参数且返回结果是一个表达式时，语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1,2,3].map( num =&gt; num*2 )</div><div class="line">// &lt;- [2,4,6]</div></pre></td></tr></table></figure></p>
-<p>如果我们用 ES5 ，他会是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[1,2,3].map(function(num)&#123;</div><div class="line">	return num*2;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>当我们不需要参数，或者要传入两个或者更多参数，我们必须用（）来包含这些参数（即使没有）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1,2,3,4].map((num,index) =&gt; num*2+index)</div><div class="line">//&lt;- [2,5,8,11]</div></pre></td></tr></table></figure></p>
-<p>当然，更多情况下我们不仅仅返回单一的表达式，还会写一些逻辑语句。这些语句，我们写在 { } 中，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[1,2,3,4].map(num =&gt; &#123;</div><div class="line">	var multiplier = 2+num;</div><div class="line">	return multiplier*num;</div><div class="line">&#125;)</div><div class="line">//&lt;-[3,8,15,24]</div></pre></td></tr></table></figure></p>
-<p>同样适用于多个参数的情形：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[1,2,3,4].map((num,index) =&gt; &#123;</div><div class="line">	var multiplier = 2+index;</div><div class="line">	return multiplier*num;</div><div class="line">&#125;)</div><div class="line">//&lt;-[2,6,12,20]</div></pre></td></tr></table></figure></p>
-<h5 id="返回对象"><a href="#返回对象" class="headerlink" title="返回对象"></a>返回对象</h5><p>当我们使用箭头函数返回一个对象时，我们需要使用（）包含这个对象，不然就会出现语法错误。<br>例1中，编译器将 number: n 解析为函数中的语句（number 解析为标签，n 解析为表达式，而这其实是不合法的），但并没有 return 语句，所以 map 的返回值为 undefined。<br>例2中，something: ‘ else ‘ 对编译器来说并无任何含义，所以抛出了语法错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3].map(n =&gt; &#123; number: n &#125;)</div><div class="line">// [undefined, undefined, undefined]</div><div class="line">[1, 2, 3].map(n =&gt; &#123; number: n, something: &apos;else&apos; &#125;)</div><div class="line">// &lt;- SyntaxError</div><div class="line">[1, 2, 3].map(n =&gt; (&#123; number: n &#125;))</div><div class="line">// &lt;- [&#123; number: 1 &#125;, &#123; number: 2 &#125;, &#123; number: 3 &#125;]</div><div class="line">[1, 2, 3].map(n =&gt; (&#123; number: n, something: &apos;else&apos; &#125;))</div><div class="line">/* &lt;- [</div><div class="line">  &#123; number: 1, something: &apos;else&apos; &#125;,</div><div class="line">  &#123; number: 2, something: &apos;else&apos; &#125;,</div><div class="line">  &#123; number: 3, something: &apos;else&apos; &#125;]</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<h5 id="函数作用范围"><a href="#函数作用范围" class="headerlink" title="函数作用范围"></a>函数作用范围</h5><p>箭头函数的作用范围与其作用域绑定，也就是说当你在函数内部深层嵌套函数时，不用通过 var self = this 或者 .bind(this) 来维持上下文<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Timer () &#123;</div><div class="line">  this.seconds = 0</div><div class="line">  setInterval(() =&gt; this.seconds++, 1000)</div><div class="line">&#125;</div><div class="line">var timer = new Timer()</div><div class="line">setTimeout(() =&gt; console.log(timer.seconds), 3100)</div><div class="line">// &lt;- 3</div></pre></td></tr></table></figure></p>
-<p>值得注意的是，ES6的箭头函数对 this 进行绑定，意味着 .call 和 .apply 不再能改变函数的上下文。</p>
-<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p>当你需要一个匿名函数来返回某些表达式时，箭头函数是简洁的，并在某种程度上让你的代码更加的精简。<br>但并不是任何情况下，都适合使用箭头函数。当参数过多，函数体逻辑较复杂时，命名函数使得你的程序更加可读。<br>箭头函数的优越性体现在函数式编程的情形，.map, .filter, 或者 .reduce。同样，在异步流程控制中，箭头函数消除了大量 callback 函数带来的阅读障碍，会是一个优秀的选择。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近日，开发 DCOS 项目的过程中，曹老板提出为该平台提供一个 OAuth2 服务，并以此作为平台的基础登录认证方式。<br>此先，平台使用了组内的 LDAP 单点登录，用户的验证已有现成的服务器处理。在此基础上的 OAuth2 服务器功能简单、明确，考虑尝试用 nodejs 搭建一个中间件。</p>
+<h2 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h2><p>OAuth 2.0 是一个关于授权（Authorization）的开放网络标准，在全世界范围内得到了广泛的应用，目前的版本是2.0版本。因此，OAuth2.0 并不是一个具体的程序或者应用，而是一个协议，一套完整、安全的授权方式的规范。<br>对 OAuth 2.0的规范，大可以另写一文详解，不在此文阐述范围。此处推荐：</p>
+<ul>
+<li>阮一峰<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="external">《理解OAuth 2.0》</a> ，较为深入浅出</li>
+<li>官方解释：<a href="http://www.rfcreader.com/#rfc6749" target="_blank" rel="external">RFC 6749</a></li>
+</ul>
+<h2 id="使用-Nodejs"><a href="#使用-Nodejs" class="headerlink" title="使用 Nodejs"></a>使用 Nodejs</h2><p>由于 DCOS 官方本身提供了 auth 的基础模型，前端显示并不需要过多的修改，选择继续沿用 react + browsify + gulp 的实现。服务器端，采用了 express + mongodb 的轻量级框架搭建此中间层应用。<br>完整结构：</p>
+<ul>
+<li>react : 应用层 UI</li>
+<li>express : RESTful API 处理</li>
+<li>mongodb : 数据持久化<br>此外，在 Github 上找到了基于 Nodejs 的 OAuth2.0 成熟工具库 <a href="https://github.com/oauthjs/node-oauth2-server" target="_blank" rel="external">node-oauth2-server</a>，在理解 OAuth2.0 的基础上，阅读其文档，便可通过实现其 API 便捷的开发出满足需求的服务了。</li>
+</ul>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h4 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h4><p>本服务选用了 OAuth2.0 标准的 Authorization Code 授权方式，其具体的授权过程如下：</p>
+<ol>
+<li>打开客户端，进行本地登录检测，若尚无本地登录，则进行后续步骤</li>
+<li>客户端跳转到 OAuth 服务提供的用户认证界面，并在 uri 中带有授权方式（此处为 authorize_code，但必须标识），客户端 id，回调地址（方便 OAuth 服务器返回应用的界面）</li>
+<li>用户进行用户名密码登录，此处为 LDAP 验证</li>
+<li>验证成功，服务器生成授权码 authentication_code，并附在先前取得的回调 uri 中，返回 DCOS 应用</li>
+<li>DCOS 接收到带有授权码的请求，说明已经获得了 OAuth服务器的授权，此时带着客户端 id、客户端 secret、授权码，向 OAuth 服务器换取 Access Token。</li>
+<li>DCOS 客户端得到成功换去的 Token，在本地记录登陆的用户以及其现有 Token。利用 Token 请求相应可见的资源。</li>
+</ol>
+<h4 id="API-实现"><a href="#API-实现" class="headerlink" title="API 实现"></a>API 实现</h4><p>node-oauth2-server 对 OAuth2.0 的相关操作提供了处理流，并将 API 暴露给用户进行订制。通过新建 oauth-server 对象并传参，调用其接口，就能实现完整的 OAuth 验证。<br>以下为 Authorization Code Grant 方式的说明：</p>
+<p><img src="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/online-example" alt="Authorization Code"></p>
+<p>实现 Model functions：<br>如文档所述，我们一次实现这些接口，以 getAuthorizationCode 为例：</p>
+<p><img src="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/authorize_code" alt="getAuthorizationCode"></p>
+<p>意思是说，该接口会调用 saveAuthorizationCode 方法获取一个已经存在的授权码。实现此方法，需要严格的按照文档所要求的输入参数，返回 json 格式书写。下面是具体的实现示例：</p>
+<p><img src="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/own-authorize_code" alt="getAuthorizationCode implemetation"></p>
+<p>本中间件选用了 mongoose 来操作 mongodb 进行数据存储，此处不过多的赘述。代码大意为，根据传入的 code 值查找 authenticationCode schema，最终返回完整的 Code 对象。</p>
+<p>根据以上流程，一一实现 Model function 即可。</p>
+<h4 id="URI-规范"><a href="#URI-规范" class="headerlink" title="URI 规范"></a>URI 规范</h4><p>上文中已经提及了 OAuth2.0 协议的规范 RFC6749，本项目亦严格遵循其要求。（其实不根据这个要求书写的话， node-oauth2-server 的处理流就会报错）<br>此处，简单归纳并列出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.跳转到 OAuth认证界面:</div><div class="line">http://localhost:3000/?response_type=code&amp;client_id=dc-njuics-cn&amp;redirect_uri=http://localhost%3A4200</div><div class="line">2.返回客户端界面：</div><div class="line">http://localhost:4200/auth?code=123</div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次实践使用 Nodejs 完整地搭建了一个中间件服务器，并严格遵守 OAuth2.0 协议，利用开源库，开发出了可用性、可拓展性良好的应用，并即将投入到生产环境中，获益匪浅。<br>至于过程中的坑，莫过于对开源库 API 文档阅读的不细致，抓不住要点，导致控制流各种报错。大费周章的阅读源码，其实是接口的数据格式有误，小题大做，导致开发效率较低。<br>此外，拿到项目后应有意识的阅读业界规范，并以此为基础进行具体实现，做出的东西才有使用价值。</p>
+<p>项目地址：<a href="https://github.com/RobottDog/DCOS-Auth" target="_blank" rel="external">https://github.com/RobottDog/DCOS-Auth</a><br>如果喜欢，请给我一个 star 吧~</p>
 
       
     </div>
@@ -345,7 +371,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ES6/" rel="tag"># ES6</a>
+            <a href="/tags/Nodejs/" rel="tag"># Nodejs</a>
           
         </div>
       
@@ -358,8 +384,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/写在开始/" rel="next" title="写在开始">
-                <i class="fa fa-chevron-left"></i> 写在开始
+              <a href="/2017/10/08/node-及-webpack-版本更新实践/" rel="next" title="node 及 webpack 版本更新实践">
+                <i class="fa fa-chevron-left"></i> node 及 webpack 版本更新实践
               </a>
             
           </div>
@@ -367,10 +393,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/08/node-及-webpack-版本更新实践/" rel="prev" title="node 及 webpack 版本更新实践">
-                node 及 webpack 版本更新实践 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#在-JavaScript-中使用箭头函数"><span class="nav-number">1.</span> <span class="nav-text">在 JavaScript 中使用箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#返回基本类型"><span class="nav-number">1.1.</span> <span class="nav-text">返回基本类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回对象"><span class="nav-number">1.2.</span> <span class="nav-text">返回对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数作用范围"><span class="nav-number">1.3.</span> <span class="nav-text">函数作用范围</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结论"><span class="nav-number">1.4.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OAuth-2-0"><span class="nav-number">2.</span> <span class="nav-text">OAuth 2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Nodejs"><span class="nav-number">3.</span> <span class="nav-text">使用 Nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">4.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#授权流程"><span class="nav-number">4.0.1.</span> <span class="nav-text">授权流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API-实现"><span class="nav-number">4.0.2.</span> <span class="nav-text">API 实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URI-规范"><span class="nav-number">4.0.3.</span> <span class="nav-text">URI 规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -701,9 +723,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/09/29/ES6/';
-          this.page.identifier = '2017/09/29/ES6/';
-          this.page.title = 'ES6入门：使用箭头函数';
+          this.page.url = 'http://yoursite.com/2017/11/01/使用Nodejs搭建一个OAuth2服务/';
+          this.page.identifier = '2017/11/01/使用Nodejs搭建一个OAuth2服务/';
+          this.page.title = '使用Nodejs搭建一个OAuth2服务';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://robottdog-github-io.disqus.com/embed.js';

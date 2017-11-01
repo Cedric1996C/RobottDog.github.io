@@ -234,6 +234,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/01/使用Nodejs搭建一个OAuth2服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobottDoG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RobottDoG.com">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/01/使用Nodejs搭建一个OAuth2服务/" itemprop="url">使用Nodejs搭建一个OAuth2服务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-01T16:38:18+08:00">
+                2017-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/01/使用Nodejs搭建一个OAuth2服务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/01/使用Nodejs搭建一个OAuth2服务/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近日，开发 DCOS 项目的过程中，曹老板提出为该平台提供一个 OAuth2 服务，并以此作为平台的基础登录认证方式。<br>此先，平台使用了组内的 LDAP 单点登录，用户的验证已有现成的服务器处理。在此基础上的 OAuth2 服务器功能简单、明确，考虑尝试用 nodejs 搭建一个中间件。</p>
+<h2 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h2><p>OAuth 2.0 是一个关于授权（Authorization）的开放网络标准，在全世界范围内得到了广泛的应用，目前的版本是2.0版本。因此，OAuth2.0 并不是一个具体的程序或者应用，而是一个协议，一套完整、安全的授权方式的规范。<br>对 OAuth 2.0的规范，大可以另写一文详解，不在此文阐述范围。此处推荐：</p>
+<ul>
+<li>阮一峰<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="external">《理解OAuth 2.0》</a> ，较为深入浅出</li>
+<li>官方解释：<a href="http://www.rfcreader.com/#rfc6749" target="_blank" rel="external">RFC 6749</a></li>
+</ul>
+<h2 id="使用-Nodejs"><a href="#使用-Nodejs" class="headerlink" title="使用 Nodejs"></a>使用 Nodejs</h2><p>由于 DCOS 官方本身提供了 auth 的基础模型，前端显示并不需要过多的修改，选择继续沿用 react + browsify + gulp 的实现。服务器端，采用了 express + mongodb 的轻量级框架搭建此中间层应用。<br>完整结构：</p>
+<ul>
+<li>react : 应用层 UI</li>
+<li>express : RESTful API 处理</li>
+<li>mongodb : 数据持久化<br>此外，在 Github 上找到了基于 Nodejs 的 OAuth2.0 成熟工具库 <a href="https://github.com/oauthjs/node-oauth2-server" target="_blank" rel="external">node-oauth2-server</a>，在理解 OAuth2.0 的基础上，阅读其文档，便可通过实现其 API 便捷的开发出满足需求的服务了。</li>
+</ul>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h4 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h4><p>本服务选用了 OAuth2.0 标准的 Authorization Code 授权方式，其具体的授权过程如下：</p>
+<ol>
+<li>打开客户端，进行本地登录检测，若尚无本地登录，则进行后续步骤</li>
+<li>客户端跳转到 OAuth 服务提供的用户认证界面，并在 uri 中带有授权方式（此处为 authorize_code，但必须标识），客户端 id，回调地址（方便 OAuth 服务器返回应用的界面）</li>
+<li>用户进行用户名密码登录，此处为 LDAP 验证</li>
+<li>验证成功，服务器生成授权码 authentication_code，并附在先前取得的回调 uri 中，返回 DCOS 应用</li>
+<li>DCOS 接收到带有授权码的请求，说明已经获得了 OAuth服务器的授权，此时带着客户端 id、客户端 secret、授权码，向 OAuth 服务器换取 Access Token。</li>
+<li>DCOS 客户端得到成功换去的 Token，在本地记录登陆的用户以及其现有 Token。利用 Token 请求相应可见的资源。</li>
+</ol>
+<h4 id="API-实现"><a href="#API-实现" class="headerlink" title="API 实现"></a>API 实现</h4><p>node-oauth2-server 对 OAuth2.0 的相关操作提供了处理流，并将 API 暴露给用户进行订制。通过新建 oauth-server 对象并传参，调用其接口，就能实现完整的 OAuth 验证。<br>以下为 Authorization Code Grant 方式的说明：</p>
+<p><img src="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/online-example" alt="Authorization Code"></p>
+<p>实现 Model functions：<br>如文档所述，我们一次实现这些接口，以 getAuthorizationCode 为例：</p>
+<p><img src="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/authorize_code" alt="getAuthorizationCode"></p>
+<p>意思是说，该接口会调用 saveAuthorizationCode 方法获取一个已经存在的授权码。实现此方法，需要严格的按照文档所要求的输入参数，返回 json 格式书写。下面是具体的实现示例：</p>
+<p><img src="http://oyqv9yjj2.bkt.clouddn.com/nodejs-oauth2.0/own-authorize_code" alt="getAuthorizationCode implemetation"></p>
+<p>本中间件选用了 mongoose 来操作 mongodb 进行数据存储，此处不过多的赘述。代码大意为，根据传入的 code 值查找 authenticationCode schema，最终返回完整的 Code 对象。</p>
+<p>根据以上流程，一一实现 Model function 即可。</p>
+<h4 id="URI-规范"><a href="#URI-规范" class="headerlink" title="URI 规范"></a>URI 规范</h4><p>上文中已经提及了 OAuth2.0 协议的规范 RFC6749，本项目亦严格遵循其要求。（其实不根据这个要求书写的话， node-oauth2-server 的处理流就会报错）<br>此处，简单归纳并列出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.跳转到 OAuth认证界面:</div><div class="line">http://localhost:3000/?response_type=code&amp;client_id=dc-njuics-cn&amp;redirect_uri=http://localhost%3A4200</div><div class="line">2.返回客户端界面：</div><div class="line">http://localhost:4200/auth?code=123</div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次实践使用 Nodejs 完整地搭建了一个中间件服务器，并严格遵守 OAuth2.0 协议，利用开源库，开发出了可用性、可拓展性良好的应用，并即将投入到生产环境中，获益匪浅。<br>至于过程中的坑，莫过于对开源库 API 文档阅读的不细致，抓不住要点，导致控制流各种报错。大费周章的阅读源码，其实是接口的数据格式有误，小题大做，导致开发效率较低。<br>此外，拿到项目后应有意识的阅读业界规范，并以此为基础进行具体实现，做出的东西才有使用价值。</p>
+<p>项目地址：<a href="https://github.com/RobottDog/DCOS-Auth" target="_blank" rel="external">https://github.com/RobottDog/DCOS-Auth</a><br>如果喜欢，请给我一个 star 吧~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/08/node-及-webpack-版本更新实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -717,7 +879,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -730,7 +892,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
